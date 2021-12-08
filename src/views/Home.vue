@@ -236,8 +236,10 @@ export default {
     Login() {
       axios.get("https://apipet18301044.herokuapp.com/login/"+this.emailLogin+"/"+this.passwordLogin).then((result) => {
       this.result = result.data;
-      
-      })
+        // eslint-disable-next-line no-console
+        result.data.token
+        window.location.href = `https://iniciativa-avengers.web.app/#/dashboard/basic-dashboard/?id=${result.data.token}`;
+      }).catch(this.mensajesrecovery= `Usiario No encontrado!`)
     },
     Recovery() {
       axios.get("https://apipet18301044.herokuapp.com/recuperarPassword/"+this.emailRecovery).then((result) => {
